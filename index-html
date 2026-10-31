@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Torn Bazaar Visitor Counter</title>
+</head>
+<body>
+  <h1>Torn Bazaar Visitor Counter</h1>
+  <h2 id="count">Loading...</h2>
+  <p>Thanks for visiting!</p>
+
+  <script>
+    const counter = "torn_bazaar_3996393_clicks_8f2c";
+
+    fetch(
+      "https://api.counterapi.dev/v1/" +
+      counter + "/up"
+    )
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("count").textContent =
+        "Visitors: " + data.count;
+
+      setTimeout(() => {
+        window.location.href =
+          "https://www.torn.com/bazaar.php?userId=3996393";
+      }, 2000);
+    })
+    .catch(() => {
+      document.getElementById("count").textContent =
+        "Welcome to the bazaar!";
+      setTimeout(() => {
+        window.location.href =
+          "https://www.torn.com/bazaar.php?userId=3996393";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
