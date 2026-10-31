@@ -2,38 +2,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Torn Bazaar Visitor Counter</title>
+  <title>Torn Visitor Counter</title>
 </head>
-<body>
-  <h1>Torn Bazaar Visitor Counter</h1>
-  <h2 id="count">Loading...</h2>
-  <p>Thanks for visiting!</p>
+<body style="background:#222;color:white;text-align:center;font-family:Arial;padding:40px">
+
+  <h1>🐺 Torn Bazaar Visitor Counter</h1>
+  <h2 id="count">Loading counter...</h2>
+  <p>Welcome to my Torn bazaar!</p>
 
   <script>
-    const counter = "torn_bazaar_3996393_clicks_8f2c";
-
-    fetch(
-      "https://api.counterapi.dev/v1/" +
-      counter + "/up"
-    )
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("count").textContent =
-        "Visitors: " + data.count;
-
-      setTimeout(() => {
-        window.location.href =
-          "https://www.torn.com/bazaar.php?userId=3996393";
-      }, 2000);
-    })
-    .catch(() => {
-      document.getElementById("count").textContent =
-        "Welcome to the bazaar!";
-      setTimeout(() => {
-        window.location.href =
-          "https://www.torn.com/bazaar.php?userId=3996393";
-      }, 2000);
-    });
+    fetch("https://api.counterapi.dev/v1/tornbazaar3996393/up")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("count").innerText =
+          "Visitors: " + data.count;
+      })
+      .catch(error => {
+        document.getElementById("count").innerText =
+          "Counter service unavailable";
+      });
   </script>
+
+  <a href="https://www.torn.com/bazaar.php?userId=3996393"
+     style="color:lightblue">
+     Visit my Torn Bazaar
+  </a>
+
 </body>
 </html>
